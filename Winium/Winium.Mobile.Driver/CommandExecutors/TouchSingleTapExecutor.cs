@@ -19,7 +19,7 @@
                 return this.JsonResponse();
             }
 
-            var tapPoint = this.Automator.RequestElementLocation(elementId).GetValueOrDefault();
+            var tapPoint = Scale(this.Automator.RequestElementLocation(elementId).GetValueOrDefault());
             this.Automator.EmulatorController.PerformGesture(new TapGesture(tapPoint));
 
             return this.JsonResponse();

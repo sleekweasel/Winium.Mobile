@@ -18,11 +18,11 @@
         protected override string DoImpl()
         {
             var screen = this.Automator.EmulatorController.PhoneScreenSize;
-            var startPoint = new Point(screen.Width / 2, screen.Height / 2);
+            var startPoint = Scale(new Point(screen.Width / 2, screen.Height / 2));
             var elementId = Automator.GetValue<string>(this.ExecutedCommand.Parameters, "element");
             if (elementId != null)
             {
-                startPoint = this.Automator.RequestElementLocation(elementId).GetValueOrDefault();
+                startPoint = Scale(this.Automator.RequestElementLocation(elementId).GetValueOrDefault());
             }
 
             if (this.ExecutedCommand.Parameters.ContainsKey("speed"))
@@ -31,13 +31,13 @@
                 var yOffset = Convert.ToInt32(this.ExecutedCommand.Parameters["yoffset"], CultureInfo.InvariantCulture);
                 var speed = Convert.ToDouble(this.ExecutedCommand.Parameters["speed"], CultureInfo.InvariantCulture);
 
-                this.Automator.EmulatorController.PerformGesture(new FlickGesture(startPoint, xOffset, yOffset, speed));
+                this.Automator.EmulatorController.PerformGesture(new FlickGesture(startPoint, Scale(xOffset), Scale(yOffset), speed));
             }
             else
             {
                 var xSpeed = Convert.ToDouble(this.ExecutedCommand.Parameters["xspeed"], CultureInfo.InvariantCulture);
                 var ySpeed = Convert.ToDouble(this.ExecutedCommand.Parameters["yspeed"], CultureInfo.InvariantCulture);
-                this.Automator.EmulatorController.PerformGesture(new FlickGesture(startPoint, xSpeed, ySpeed));
+                this.Automator.EmulatorController.PerformGesture(new FlickGesture(startPoint, Scale(xSpeed), Scale(ySpeed)));
             }
 
             return this.JsonResponse();

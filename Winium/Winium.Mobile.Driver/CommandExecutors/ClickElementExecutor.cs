@@ -12,7 +12,7 @@
 
         internal static bool ClickElement(Automator automator, string elementId)
         {
-            var location = automator.RequestElementLocation(elementId);
+            var location = Scale(automator.RequestElementLocation(elementId));
 
             if (!location.HasValue)
             {

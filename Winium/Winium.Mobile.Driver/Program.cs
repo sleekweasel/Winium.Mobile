@@ -51,6 +51,7 @@
                 }
 
                 Capabilities.BoundDeviceName = options.BoundDeviceName;
+                Capabilities.Scale = float.Parse(options.Scale);
                 Capabilities.DefaultPingTimeout = options.PingTimeout;
 
                 Logger.Info(versionInfo);

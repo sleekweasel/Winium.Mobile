@@ -10,6 +10,7 @@
     using Mobile.Common;
     using Mobile.Common.Exceptions;
     using Mobile.Driver.Automator;
+    using System.Drawing;
 
     #endregion
 
@@ -28,6 +29,31 @@
         #endregion
 
         #region Public Methods and Operators
+
+        public static Point? Scale(Point? coordinates)
+        {
+            if (!coordinates.HasValue) return null;
+            return new Point(
+              (int)(coordinates.Value.X * Capabilities.Scale),
+              (int)(coordinates.Value.Y * Capabilities.Scale));
+        }
+
+        public static Point Scale(Point coordinates)
+        {
+            return new Point(
+              (int)(coordinates.X * Capabilities.Scale),
+              (int)(coordinates.Y * Capabilities.Scale));
+        }
+
+        public static int Scale(int ordinate)
+        {
+            return (int)(ordinate * Capabilities.Scale);
+        }
+
+        public static double Scale(double ordinate)
+        {
+            return ordinate * Capabilities.Scale;
+        }
 
         public CommandResponse Do()
         {

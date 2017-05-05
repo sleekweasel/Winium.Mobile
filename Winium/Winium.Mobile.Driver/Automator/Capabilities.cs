@@ -19,6 +19,8 @@
 
         private static string boundDeviceName;
 
+        public static double Scale;
+
         #endregion
 
         #region Constructors and Destructors

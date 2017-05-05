@@ -18,6 +18,9 @@
         [Option("port", Required = false, DefaultValue = 9999, HelpText = "port to listen on")]
         public int Port { get; set; }
 
+        [Option("scale", Required = false, DefaultValue = "1", HelpText = "scaling for elements")]
+        public string Scale { get; set; }
+
         [Option("url-base", Required = false, HelpText = "base URL path prefix for commands, e.g. wd/url")]
         public string UrlBase { get; set; }
 

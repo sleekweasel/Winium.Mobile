@@ -20,13 +20,13 @@
             Point coordinates;
             if (elementId != null)
             {
-                coordinates = this.Automator.RequestElementLocation(elementId).GetValueOrDefault();
+                coordinates = Scale(this.Automator.RequestElementLocation(elementId).GetValueOrDefault());
             }
             else
             {
                 var xOffset = Convert.ToInt32(this.ExecutedCommand.Parameters["xoffset"], CultureInfo.InvariantCulture);
                 var yOffset = Convert.ToInt32(this.ExecutedCommand.Parameters["yoffset"], CultureInfo.InvariantCulture);
-                coordinates = new Point(xOffset, yOffset);
+                coordinates = Scale(new Point(xOffset, yOffset));
             }
 
             this.Automator.EmulatorController.MoveCursorTo(coordinates);
