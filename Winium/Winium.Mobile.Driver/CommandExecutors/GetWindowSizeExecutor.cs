@@ -5,6 +5,7 @@
     using System.Collections.Generic;
 
     using Winium.Mobile.Common;
+    using Mobile.Driver.Automator;
 
     #endregion
 
@@ -18,7 +19,10 @@
 
             return this.JsonResponse(
                 ResponseStatus.Success, 
-                new Dictionary<string, int> { { "width", phoneScreenSize.Width }, { "height", phoneScreenSize.Height } });
+                new Dictionary<string, int> {
+                    { "width", (int)(phoneScreenSize.Width / Capabilities.Scale) },
+                    { "height", (int)(phoneScreenSize.Height / Capabilities.Scale) }
+                });
         }
 
         #endregion

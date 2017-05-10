@@ -20,16 +20,16 @@
             Point coordinates;
             if (elementId != null)
             {
-                coordinates = Scale(this.Automator.RequestElementLocation(elementId).GetValueOrDefault());
+                coordinates = this.Automator.RequestElementLocation(elementId).GetValueOrDefault();
             }
             else
             {
                 var xOffset = Convert.ToInt32(this.ExecutedCommand.Parameters["xoffset"], CultureInfo.InvariantCulture);
                 var yOffset = Convert.ToInt32(this.ExecutedCommand.Parameters["yoffset"], CultureInfo.InvariantCulture);
-                coordinates = Scale(new Point(xOffset, yOffset));
+                coordinates = new Point(xOffset, yOffset);
             }
 
-            this.Automator.EmulatorController.MoveCursorTo(coordinates);
+            this.Automator.EmulatorController.MoveCursorTo(Scale(coordinates));
 
             return this.JsonResponse();
         }

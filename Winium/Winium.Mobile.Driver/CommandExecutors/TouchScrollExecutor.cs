@@ -18,7 +18,7 @@
         protected override string DoImpl()
         {
             var screen = this.Automator.EmulatorController.PhoneScreenSize;
-            var startPoint = Scale(new Point(screen.Width / 2, screen.Height / 2));
+            var startPoint = new Point(screen.Width / 2, screen.Height / 2);
 
             var elementId = Automator.GetValue<string>(this.ExecutedCommand.Parameters, "element");
             if (elementId != null)
