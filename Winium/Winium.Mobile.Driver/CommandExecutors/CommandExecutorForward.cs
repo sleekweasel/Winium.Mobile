@@ -6,6 +6,7 @@
 
         protected override string DoImpl()
         {
+            this.ExecutedCommand.Context = this.Automator.CurrentContext;
             return this.Automator.CommandForwarder.ForwardCommand(this.ExecutedCommand);
         }
 
